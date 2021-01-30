@@ -4,15 +4,15 @@
     repo: ppa:openjdk-r/ppa
     state: present
 
-#- name: Install Java 1.7
-#  apt: name=openjdk-7-* state=present
+- name: Install Java 1.7
+  apt: name=openjdk-7-* state=present
 
 - name: install tomcat 7
   apt: name=tomcat7 state=present
 
 - name: copy war file
   copy: src=./target/LoginWebApp-1.war dest=/var/lib/tomcat7/webapps/
-  notify: restart tomcat
+#  notify: restart tomcat
 
 - name: Start Tomcat7
   service: name=tomcat7 state=started enabled=yes
